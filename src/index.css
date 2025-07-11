@@ -1,0 +1,129 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 226 32% 97%;  /* Light background with a hint of blue */
+    --foreground: 230 28% 27%;  /* Based on navy blue for text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 28% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 28% 27%;
+
+    --primary: 231 34% 27%;     /* Navy blue #2E365A */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 272 15% 44%;   /* Purple #6C5E82 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 24% 80%;       /* Light blue tint */
+    --muted-foreground: 230 20% 40%;
+
+    --accent: 283 14% 61%;      /* Mauve #A591A7 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 74% 68%;   /* Coral #E0797F */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 24% 85%;
+    --input: 220 24% 85%;
+    --ring: 231 34% 27%;        /* Navy blue for focus rings */
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .heading-gradient {
+    @apply bg-gradient-to-r from-navyBlue to-mediumBlue bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply bg-navyBlue text-white hover:bg-mediumBlue transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-purple text-white hover:bg-opacity-90 transition-all duration-200;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 py-16 md:py-24;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-md transition-all;
+  }
+
+  .sidebar-item-active {
+    @apply bg-lightBlue text-navyBlue font-medium;
+  }
+
+  /* Modern navbar styles */
+  .nav-item {
+    @apply relative py-2 px-1 font-medium transition-colors before:absolute before:inset-x-0 before:bottom-0 before:h-0.5 before:scale-x-0 before:bg-coral before:transition-transform hover:before:scale-x-100;
+  }
+  
+  .nav-item-active {
+    @apply text-coral before:scale-x-100;
+  }
+
+  /* Search animation */
+  .search-appear {
+    @apply animate-slideDown;
+  }
+
+  /* Modern dropdown styles */
+  .dropdown-content {
+    @apply origin-top transform scale-95 opacity-0 transition duration-200 ease-out;
+  }
+  
+  .dropdown-content.show {
+    @apply scale-100 opacity-100;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
